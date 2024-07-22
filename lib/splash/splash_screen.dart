@@ -1,6 +1,6 @@
-import 'package:day12_login/core/constants.dart';
+import 'package:day12_login/core/constants/constants.dart';
 import 'package:day12_login/main.dart';
-import 'package:day12_login/core/navigators.dart';
+import 'package:day12_login/core/constants/navigators.dart';
 import 'package:day12_login/screens/auth_screens/sign_In.dart';
 import 'package:flutter/material.dart';
 
@@ -67,17 +67,18 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
             children: [
               Stack(
                 children: [
-                  // Slide and fade transition for the image
                   SlideTransition(
                     position: _slideAnimation,
                     child: FadeTransition(
                       opacity: _fadeAnimation,
                       child: Container(
+                        height: mediaheight(context) / 1.6,
                         width: mediawidth(context),
-                        height: mediaheight(context),
                         decoration: BoxDecoration(
                           image: DecorationImage(
-                            image: AssetImage("assets/images/logo.png"),
+                            image: AssetImage(
+                              "assets/images/logo.png",
+                            ),
                           ),
                         ),
                       ),

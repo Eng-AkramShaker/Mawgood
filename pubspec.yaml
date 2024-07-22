@@ -21,7 +21,13 @@ dependencies:
   animated_search_bar:
   intl:
   http:
-  carousel_slider:
+  motion_tab_bar:
+  dropdown_button2:
+  flutter_custom_carousel_slider:
+  cached_network_image:
+  flutter_zoom_drawer:
+
+  get:
 
 dev_dependencies:
   flutter_test:

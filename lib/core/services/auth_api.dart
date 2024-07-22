@@ -1,11 +1,11 @@
 // ignore_for_file: non_constant_identifier_names, unused_local_variable, avoid_print, unnecessary_brace_in_string_interps
 import 'dart:convert';
-
+import 'package:day12_login/core/services/api.dart';
 import 'package:day12_login/model/sign_in_model.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-class Auth_Api {
+class Auth_Api extends Api {
   //
   // Sign In ============================================================================================
 
@@ -13,7 +13,13 @@ class Auth_Api {
     var url = Uri.parse('https://mawgood.x-crisis.com/public/api/login');
 
     var request = http.MultipartRequest('POST', url);
-    request.fields.addAll({'email': email, 'password': pass});
+    request.fields.addAll({
+      // 'email': email,
+      // 'password': pass,
+
+      'email': 'aa@aa.com',
+      'password': '123456',
+    });
 
     try {
       var response = await request.send();

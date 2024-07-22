@@ -1,4 +1,13 @@
 {
-  "cSpell.words": ["resheight", "reswidth", "RGBO", "Snak", "المرور"],
+  "cSpell.words": [
+    "Feild",
+    "ints",
+    "resheight",
+    "reswidth",
+    "RGBO",
+    "Snak",
+    "vsync",
+    "المرور"
+  ],
   "java.configuration.updateBuildConfiguration": "automatic"
 }

@@ -1,6 +1,10 @@
-import 'package:flutter/material.dart';
+// ignore_for_file: must_be_immutable
 
-class AppBarWidget extends StatelessWidget {
+import 'package:day12_login/main.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
+
+class AppBarWidget extends GetView<MyDrawerController> {
   String? name;
   AppBarWidget({super.key, this.name});
 
@@ -9,87 +13,28 @@ class AppBarWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Row(
-          children: [
-            CircleAvatar(
-              radius: 24.0,
-              backgroundImage: AssetImage('assets/images/electro.png'), // Replace with your image URL or AssetImage
-            ),
-            SizedBox(width: 10.0),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'welcome. 👋',
-                  style: TextStyle(
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                Text(
-                  name ?? ' Ahmed Hassan',
-                  style: TextStyle(
-                    fontSize: 14.0,
-                    color: Colors.grey,
-                  ),
-                ),
-              ],
-            ),
-          ],
+        Container(
+          height: 50,
+          // width: 50,
+          decoration: BoxDecoration(
+            color: Colors.transparent,
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Image.asset('assets/images/logo.png'),
         ),
-        Row(
-          children: [
-            Container(
-              width: 60,
-              height: 40,
+        Center(
+          child: InkWell(
+            onTap: controller.toggleDrawer,
+            child: Container(
+              height: 30,
+              // width: 50,
               decoration: BoxDecoration(
-                border: Border.all(
-                  color: Colors.grey,
-                ),
-                borderRadius: BorderRadius.circular(22),
+                color: Colors.transparent,
+                borderRadius: BorderRadius.circular(10),
               ),
-              child: Row(
-                children: [
-                  Image.asset(
-                    'assets/images/us_flag.png',
-                    height: 28,
-                  ),
-                  const Text('EN'),
-                ],
-              ),
+              child: Image.asset('assets/images/icon_drowar.png'),
             ),
-            const SizedBox(width: 2.0),
-            Stack(
-              children: [
-                IconButton(
-                  icon: const Icon(Icons.shopping_cart),
-                  onPressed: () {},
-                ),
-                Positioned(
-                  right: 0,
-                  child: Container(
-                    padding: const EdgeInsets.all(2),
-                    decoration: BoxDecoration(
-                      color: Colors.red,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    constraints: const BoxConstraints(
-                      minWidth: 12,
-                      minHeight: 4,
-                    ),
-                    child: const Text(
-                      '9',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 8,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                )
-              ],
-            ),
-          ],
+          ),
         ),
       ],
     );
