@@ -1,12 +1,12 @@
 // ignore_for_file: unused_local_variable, must_be_immutable
 
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:day12_login/core/constants/constants.dart';
 import 'package:day12_login/data/controllers/auth/auth_provider.dart';
 import 'package:day12_login/core/constants/navigators.dart';
 import 'package:day12_login/data/controllers/favorite/favorite.dart';
 import 'package:day12_login/data/controllers/places/Places.dart';
 import 'package:day12_login/screens/category/places/details_screen.dart';
+import 'package:day12_login/screens/widgets/images/Custom_Image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -113,18 +113,10 @@ class _ShowAllPlacesState extends State<ShowAllPlaces> {
                                         ),
                                       ),
                                       SizedBox(width: 15),
-                                      ClipRRect(
-                                        borderRadius: BorderRadius.circular(15),
-                                        child: CachedNetworkImage(
-                                          imageUrl: item.media.isEmpty ? "https://i.suar.me/ONn/l" : item.media[0].imgPath!,
-                                          // height: 100,
-                                          width: 130,
-                                          fit: BoxFit.fill,
-                                          progressIndicatorBuilder: (context, url, downloadProgress) =>
-                                              Center(child: CircularProgressIndicator(value: downloadProgress.progress)),
-                                          errorWidget: (context, url, error) => Center(child: Icon(Icons.error, size: 25)),
-                                        ),
-                                      ),
+                                      Custom_Image(
+                                          h: double.infinity,
+                                          w: 130,
+                                          images: item.media.isEmpty ? "https://i.suar.me/ONn/l" : item.media[0].imgPath!),
                                     ],
                                   ),
                                 ],

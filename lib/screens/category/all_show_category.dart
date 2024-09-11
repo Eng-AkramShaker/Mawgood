@@ -1,11 +1,7 @@
 // ignore_for_file: unused_local_variable, unused_element, must_be_immutable, unnecessary_null_comparison
 
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:day12_login/core/constants/navigators.dart';
 import 'package:day12_login/data/controllers/home/home_provider.dart';
-import 'package:day12_login/core/constants/constants.dart';
 import 'package:day12_login/data/model/all_category_model.dart';
-import 'package:day12_login/screens/category/sub_category/sub_caregory.dart';
 import 'package:day12_login/screens/widgets/card_details.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

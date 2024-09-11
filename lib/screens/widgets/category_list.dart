@@ -1,9 +1,9 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:day12_login/data/controllers/home/home_provider.dart';
 import 'package:day12_login/core/constants/constants.dart';
 import 'package:day12_login/core/constants/navigators.dart';
 import 'package:day12_login/data/model/all_category_model.dart';
 import 'package:day12_login/screens/category/all_show_category.dart';
+import 'package:day12_login/screens/widgets/images/Custom_Image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -62,7 +62,7 @@ class _CategoryListState extends State<CategoryList> {
 
   Widget _buildCategoryList(Controller_Home proHome) {
     return SizedBox(
-      height: 140.0,
+      height: 160.0,
       width: double.infinity,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
@@ -83,8 +83,8 @@ class _CategoryListState extends State<CategoryList> {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: SizedBox(
-          height: 180.0,
-          width: 180.0,
+          height: 220.0,
+          width: 200.0,
           child: Container(
             padding: const EdgeInsets.all(16.0),
             decoration: BoxDecoration(
@@ -93,15 +93,18 @@ class _CategoryListState extends State<CategoryList> {
             ),
             child: Column(
               children: [
-                CachedNetworkImage(
-                  imageUrl: category.imgPath!,
-                  width: 70,
-                  height: 60,
-                  fit: BoxFit.fill,
-                  progressIndicatorBuilder: (context, url, downloadProgress) =>
-                      Center(child: CircularProgressIndicator(value: downloadProgress.progress)),
-                  errorWidget: (context, url, error) => Center(child: Icon(Icons.error, size: 25)),
-                ),
+                // CachedNetworkImage(
+                //   imageUrl: category.imgPath!,
+                //   width: 70,
+                //   height: 60,
+                //   fit: BoxFit.fill,
+                //   progressIndicatorBuilder: (context, url, downloadProgress) =>
+                //       Center(child: CircularProgressIndicator(value: downloadProgress.progress)),
+                //   errorWidget: (context, url, error) => Center(child: Icon(Icons.error, size: 25)),
+                // ),
+
+                Custom_Image(h: 80, w: 80, images: category.imgPath!),
+
                 const SizedBox(height: 8.0),
                 Text(
                   category.name!,

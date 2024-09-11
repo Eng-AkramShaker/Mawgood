@@ -1,12 +1,12 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first, non_constant_identifier_names, unused_local_variable
 // ignore_for_file: sized_box_for_whitespace
 
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:day12_login/core/constants/constants.dart';
 import 'package:day12_login/data/controllers/auth/auth_provider.dart';
 import 'package:day12_login/data/controllers/favorite/favorite.dart';
 import 'package:day12_login/data/controllers/places/Places.dart';
 import 'package:day12_login/data/model/get_paces_model.dart';
+import 'package:day12_login/screens/widgets/images/Custom_Image.dart';
 import 'package:flutter/material.dart';
 
 Widget ItemCard(
@@ -66,18 +66,7 @@ Widget ItemCard(
               ),
             ),
             SizedBox(width: 15),
-            ClipRRect(
-              borderRadius: BorderRadius.circular(15),
-              child: CachedNetworkImage(
-                imageUrl: img,
-                // height: 100,
-                width: 130,
-                fit: BoxFit.fill,
-                progressIndicatorBuilder: (context, url, downloadProgress) =>
-                    Center(child: CircularProgressIndicator(value: downloadProgress.progress)),
-                errorWidget: (context, url, error) => Center(child: Icon(Icons.error, size: 25)),
-              ),
-            ),
+            Custom_Image(h: double.infinity, w: 130, images: img),
           ],
         ),
       ],

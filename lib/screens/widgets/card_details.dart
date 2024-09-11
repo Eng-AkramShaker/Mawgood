@@ -1,7 +1,7 @@
 // ignore_for_file: must_be_immutable
 
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:day12_login/core/constants/constants.dart';
+import 'package:day12_login/screens/widgets/images/Custom_Image.dart';
 import 'package:flutter/material.dart';
 
 class CardDetails extends StatelessWidget {
@@ -21,19 +21,9 @@ class CardDetails extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ClipRRect(
-            borderRadius: const BorderRadius.only(topLeft: Radius.circular(12), topRight: Radius.circular(12)),
-            child: CachedNetworkImage(
-              imageUrl: img,
-              height: 150,
-              width: double.infinity,
-              fit: BoxFit.fill,
-              progressIndicatorBuilder: (context, url, downloadProgress) =>
-                  Center(child: CircularProgressIndicator(value: downloadProgress.progress)),
-              errorWidget: (context, url, error) =>
-                  Container(width: double.infinity, height: 140, child: Center(child: Icon(Icons.error, size: 25))),
-            ),
-          ),
+          Custom_Image(h: 150, w: size.width, images: img),
+
+          //
           Padding(
             padding: const EdgeInsets.all(5),
             child: Center(

@@ -60,7 +60,7 @@ class Profile_Api extends Api {
 
       return GetProfileModel.fromJson(jsonResponse);
     } else {
-      Snak_Bar(context, "لم يتم تعديل البيانات ");
+      // Snak_Bar(context, "لم يتم تعديل البيانات ");
       return null;
     }
   }

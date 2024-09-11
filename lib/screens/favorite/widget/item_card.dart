@@ -1,11 +1,10 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first, non_constant_identifier_names
 // ignore_for_file: sized_box_for_whitespace
 
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:day12_login/core/constants/constants.dart';
 import 'package:day12_login/data/model/get_profile_model.dart';
+import 'package:day12_login/screens/widgets/images/Custom_Image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 Widget custom_item(context, {required Favorite List_Favorite, required onPressed}) {
   Size size = MediaQuery.of(context).size;
@@ -28,18 +27,24 @@ Widget custom_item(context, {required Favorite List_Favorite, required onPressed
           //
           Row(
             children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(15),
-                child: CachedNetworkImage(
-                  imageUrl: List_Favorite.place!.media.isEmpty ? "https://i.suar.me/ONn/l" : List_Favorite.place!.media[0].img_path!,
-                  height: 80,
-                  width: 110,
-                  fit: BoxFit.fill,
-                  progressIndicatorBuilder: (context, url, downloadProgress) =>
-                      Center(child: CircularProgressIndicator(value: downloadProgress.progress)),
-                  errorWidget: (context, url, error) => Center(child: Icon(Icons.error, size: 25)),
-                ),
-              ),
+              // ClipRRect(
+              //   borderRadius: BorderRadius.circular(15),
+              //   child: CachedNetworkImage(
+              //     imageUrl: List_Favorite.place!.media.isEmpty ? "https://i.suar.me/ONn/l" : List_Favorite.place!.media[0].img_path!,
+              //     height: 80,
+              //     width: 110,
+              //     fit: BoxFit.fill,
+              //     progressIndicatorBuilder: (context, url, downloadProgress) =>
+              //         Center(child: CircularProgressIndicator(value: downloadProgress.progress)),
+              //     errorWidget: (context, url, error) => Center(child: Icon(Icons.error, size: 25)),
+              //   ),
+              // ),
+
+              Custom_Image(
+                  h: 80,
+                  w: 110,
+                  images: List_Favorite.place!.media.isEmpty ? "https://i.suar.me/ONn/l" : List_Favorite.place!.media[0].img_path!),
+
               //
               SizedBox(width: 10),
               Text(
