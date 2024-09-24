@@ -1,0 +1,1 @@
+ E:\\111111111111\\mawgood\\.dart_tool\\flutter_build\\a63f9c6cbdbf95dfec7b2e436783924f\\native_assets.yaml: 
