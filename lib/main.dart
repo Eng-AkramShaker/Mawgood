@@ -16,7 +16,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-// Main entry poin
+// Main entry point
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
