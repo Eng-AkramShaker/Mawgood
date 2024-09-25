@@ -2,7 +2,7 @@
 
 import 'package:day12_login/data/controllers/home/home_provider.dart';
 import 'package:day12_login/data/model/all_category_model.dart';
-import 'package:day12_login/screens/widgets/card_details.dart';
+import 'package:day12_login/screens/category/widget/card_details.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

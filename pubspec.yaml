@@ -35,7 +35,6 @@ dependencies:
   rename: ^3.0.2
   url_launcher: ^6.0.20
 
-  easy_search_bar: ^2.5.0
   hive:
   hive_flutter:
   flutter_datetime_picker:

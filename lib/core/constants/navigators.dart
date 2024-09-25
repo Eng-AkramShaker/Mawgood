@@ -9,12 +9,7 @@ pushNewScreen(BuildContext context, Widget widget) {
 }
 
 void pushAndRemoveUntil(BuildContext context, Widget screen, {arguments}) {
-  Navigator.pushAndRemoveUntil(
-      context,
-      CupertinoPageRoute(
-        builder: (context) => screen,
-      ),
-      (route) => false);
+  Navigator.pushAndRemoveUntil(context, CupertinoPageRoute(builder: (context) => screen), (route) => false);
 }
 
 void removeAllNavigation(BuildContext context, Widget screen) {

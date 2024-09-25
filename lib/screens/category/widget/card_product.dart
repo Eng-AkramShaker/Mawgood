@@ -1,7 +1,7 @@
 // ignore_for_file: camel_case_types, library_private_types_in_public_api
 
 import 'package:day12_login/core/constants/app_sizes.dart';
-import 'package:day12_login/screens/widgets/empty_%20container.dart';
+import 'package:day12_login/screens/widgets/containers/empty_%20container.dart';
 import 'package:day12_login/screens/widgets/texts/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
