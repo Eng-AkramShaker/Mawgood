@@ -3,6 +3,7 @@
 import 'package:day12_login/data/controllers/auth/auth_provider.dart';
 import 'package:day12_login/data/controllers/drawer/drawer.dart';
 import 'package:day12_login/data/controllers/search/search_provider.dart';
+import 'package:day12_login/screens/category/places/details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -94,4 +95,124 @@ AppBarWidget({required BuildContext context, required bool? show_Search}) {
   //       }
   //     },
   //   );
+}
+
+AppBar AppBar_Widget({required BuildContext context, required bool? show_Search}) {
+  return show_Search == false
+      ? AppBar(title: Text('App Title'))
+      : AppBar(
+          title: Text('Search'),
+          actions: [
+            IconButton(
+              icon: Icon(Icons.search),
+              onPressed: () {
+                showSearch(
+                  context: context,
+                  delegate: CustomSearchDelegate(),
+                );
+              },
+            )
+          ],
+        );
+}
+
+class CustomSearchDelegate extends SearchDelegate {
+  @override
+  List<Widget>? buildActions(BuildContext context) {
+    return [
+      IconButton(
+        icon: Icon(Icons.clear),
+        onPressed: () {
+          query = '';
+          close(context, null);
+        },
+      )
+    ];
+  }
+
+  @override
+  Widget? buildLeading(BuildContext context) {
+    return IconButton(
+      icon: Icon(Icons.arrow_back),
+      onPressed: () {
+        close(context, null);
+      },
+    );
+  }
+
+  @override
+  Widget buildResults(BuildContext context) {
+    final pro_Auth = Provider.of<Auth_Provider>(context, listen: false);
+    final pro_Search_Provider = Provider.of<Search_Provider>(context, listen: false);
+
+    if (query.isNotEmpty) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        pro_Search_Provider.fetch_Search(context, pro_Auth.user!.data!.token!, query);
+      });
+
+      if (pro_Search_Provider.dataSearch != null) {
+        final results = pro_Search_Provider.dataSearch!.data.where((datum) {
+          return datum.name!.toLowerCase().contains(query.toLowerCase());
+        }).toList();
+
+        return ListView.builder(
+          itemCount: results.length,
+          itemBuilder: (context, index) {
+            final result = results[index];
+            return ListTile(
+              title: Text(result.name!),
+              onTap: () {
+                // Navigate to details screen
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Details_Screen(
+                      index_id: result.category_id.toString(),
+                      show_id: result.id.toString(),
+                    ),
+                  ),
+                );
+              },
+            );
+          },
+        );
+      }
+    }
+
+    return Center(child: Text('No results found.'));
+  }
+
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    final pro_Auth = Provider.of<Auth_Provider>(context, listen: false);
+    final pro_Search_Provider = Provider.of<Search_Provider>(context, listen: false);
+
+    if (query.isNotEmpty) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        pro_Search_Provider.fetch_Search(context, pro_Auth.user!.data!.token!, query);
+      });
+
+      if (pro_Search_Provider.dataSearch != null) {
+        final suggestions = pro_Search_Provider.dataSearch!.data.where((datum) {
+          return datum.name!.toLowerCase().contains(query.toLowerCase());
+        }).toList();
+
+        return ListView.builder(
+          itemCount: suggestions.length,
+          itemBuilder: (context, index) {
+            final suggestion = suggestions[index];
+            return ListTile(
+              title: Text(suggestion.name!),
+              onTap: () {
+                query = suggestion.name!;
+                showResults(context);
+              },
+            );
+          },
+        );
+      }
+    }
+
+    return Center(child: Text('Start typing to see suggestions.'));
+  }
 }

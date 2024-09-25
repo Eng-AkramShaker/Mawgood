@@ -9,7 +9,6 @@ import 'package:day12_login/data/controllers/privacy_about/privacy_about.dart';
 import 'package:day12_login/data/controllers/profile/profile_provider.dart';
 import 'package:day12_login/core/constants/constants.dart';
 import 'package:day12_login/data/controllers/search/search_provider.dart';
-import 'package:day12_login/data/off_Line_DB/hive_providers/hive_user.dart';
 import 'package:day12_login/screens/widgets/app_bar_widget.dart';
 import 'package:day12_login/screens/widgets/drawer/custom_drawe.dart';
 import 'package:day12_login/screens/category/places/places_items.dart';
@@ -76,7 +75,9 @@ class _HomeBodyScreenState extends State<Home_body_Screen> {
         return SafeArea(
           child: Scaffold(
             backgroundColor: secondaryColor,
-            appBar: AppBarWidget(context: context, show_Search: true),
+            appBar: AppBar_Widget(context: context, show_Search: true),
+
+            // AppBarWidget(context: context, show_Search: true),
             drawer: Custom_Drawer(),
             body: Directionality(
               textDirection: TextDirection.rtl,
