@@ -9,7 +9,7 @@ import 'package:provider/provider.dart';
 
 AppBar AppBar_Widget({required BuildContext context, required bool? show_Search}) {
   return AppBar(
-    title: show_Search == false ? const Text("") : const Text('Search'),
+    title: show_Search == false ? const Text("") : const Text(' ع'),
     actions: show_Search == true
         ? [
             IconButton(
@@ -83,6 +83,6 @@ class CustomSearchDelegate extends SearchDelegate {
       }
     }
 
-    return const Center(child: Text('No results found.'));
+    return const Center(child: Text('...  لا يوجد شيئ  '));
   }
 }
