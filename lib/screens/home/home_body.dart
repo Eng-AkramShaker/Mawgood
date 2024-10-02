@@ -68,36 +68,32 @@ class _HomeBodyScreenState extends State<Home_body_Screen> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-
     return Consumer6<Auth_Provider, Controller_Home, Profile_Provider, Favorite_Controller, Search_Provider, Places_Controller>(
       builder: (context, pro_Auth, pro_home, pro_Profile, pro_Favorite, pro_Search_Provider, pro_Places_Provider, child) {
         return SafeArea(
           child: Scaffold(
             backgroundColor: secondaryColor,
             appBar: AppBar_Widget(context: context, show_Search: true),
-
-            // AppBarWidget(context: context, show_Search: true),
             drawer: Custom_Drawer(),
             body: Directionality(
               textDirection: TextDirection.rtl,
-              child: Padding(
-                padding: const EdgeInsets.all(8),
-                child: SingleChildScrollView(
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.all(8),
                   child: Column(
                     children: [
-                      //
-                      pro_home.isLodging == true
+                      pro_home.isLodging
                           ? Column(
                               children: [
                                 Auto_Slider(context, pro_home.itemList),
-                                SizedBox(height: 14),
+                                const SizedBox(height: 14),
                                 _buildCategoryList(pro_home),
                                 _buildProductGrid(pro_home, pro_Favorite),
+                                const SizedBox(height: 30),
                               ],
                             )
-                          : Center(
-                              child: Container(width: 25, height: 25, child: CircularProgressIndicator()),
+                          : const Center(
+                              child: SizedBox(width: 25, height: 25, child: CircularProgressIndicator()),
                             ),
                     ],
                   ),
@@ -116,22 +112,15 @@ class _HomeBodyScreenState extends State<Home_body_Screen> {
 
   Widget _buildProductGrid(Controller_Home homeProvider, Favorite_Controller pro_Favorite) {
     if (homeProvider.List_Product.isEmpty) {
-      return const SizedBox(
-        width: 25,
-        height: 25,
-        child: Center(child: CircularProgressIndicator()),
-      );
+      return const SizedBox(width: 25, height: 25, child: Center(child: CircularProgressIndicator()));
     } else {
-      return SizedBox(
-        height: mediaheight(context),
-        width: mediawidth(context),
-        child: ListView.builder(
-          physics: const NeverScrollableScrollPhysics(),
-          itemCount: (homeProvider.List_Product.length / 2).ceil(),
-          itemBuilder: (context, index) {
+      return Column(
+        children: List.generate(
+          (homeProvider.List_Product.length / 2).ceil(),
+          (index) {
             final item1 = homeProvider.List_Product[index * 2];
             final item2 = (index * 2 + 1 < homeProvider.List_Product.length) ? homeProvider.List_Product[index * 2 + 1] : null;
-            print(homeProvider.List_Product.length);
+
             return Padding(
               padding: const EdgeInsets.all(6),
               child: Row(
@@ -139,26 +128,23 @@ class _HomeBodyScreenState extends State<Home_body_Screen> {
                 children: [
                   Expanded(
                     child: InkWell(
-                        onTap: () {
-                          //
-
-                          pushNewScreen(context, ShowAllPlaces(id: item1.id.toString()));
-                        },
-                        child: CardDetails(name: item1.name!, img: item1.imgPath!)),
+                      onTap: () {
+                        pushNewScreen(context, ShowAllPlaces(id: item1.id.toString()));
+                      },
+                      child: CardDetails(name: item1.name!, img: item1.imgPath!),
+                    ),
                   ),
-                  if (item2 != null) SizedBox(width: 10),
+                  if (item2 != null) const SizedBox(width: 10),
                   if (item2 != null)
                     Expanded(
                       child: InkWell(
-                          onTap: () {
-                            //
-
-                            pushNewScreen(context, ShowAllPlaces(id: item2.id.toString()));
-                          },
-                          child: CardDetails(name: item2.name!, img: item2.imgPath!)),
-                    )
-                  else
-                    Spacer(),
+                        onTap: () {
+                          pushNewScreen(context, ShowAllPlaces(id: item2.id.toString()));
+                        },
+                        child: CardDetails(name: item2.name!, img: item2.imgPath!),
+                      ),
+                    ),
+                  if (item2 == null) const Spacer(),
                 ],
               ),
             );

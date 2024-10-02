@@ -58,45 +58,51 @@ class _Sub_Category_ScreenState extends State<Sub_Category_Screen> {
       return SizedBox(
         height: mediaheight(context),
         width: mediawidth(context),
-        child: ListView.builder(
-          itemCount: (home_Controller.List_Sub_Category.length / 2).ceil(),
-          itemBuilder: (context, index) {
-            final int firstIndex = index * 2;
-            final int secondIndex = firstIndex + 1;
+        child: SingleChildScrollView(
+          child: Column(
+            children: List.generate(
+              (home_Controller.List_Sub_Category.length / 2).ceil(),
+              (index) {
+                final int firstIndex = index * 2;
+                final int secondIndex = firstIndex + 1;
 
-            final firstItem = home_Controller.List_Sub_Category[firstIndex];
-            final secondItem =
-                secondIndex < home_Controller.List_Sub_Category.length ? home_Controller.List_Sub_Category[secondIndex] : null;
+                final firstItem = home_Controller.List_Sub_Category[firstIndex];
+                final secondItem =
+                    secondIndex < home_Controller.List_Sub_Category.length ? home_Controller.List_Sub_Category[secondIndex] : null;
 
-            return home_Controller.lodging_sub_category == false
-                ? Center(child: Container(width: 25, height: 25, child: CircularProgressIndicator()))
-                : Padding(
-                    padding: const EdgeInsets.all(6),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: InkWell(
-                            onTap: () {
-                              pushNewScreen(context, ShowAllPlaces(id: firstItem.id.toString()));
-                            },
-                            child: CardDetails(name: firstItem.name!, img: firstItem.imgPath!),
-                          ),
+                return home_Controller.lodging_sub_category == false
+                    ? Center(
+                        child: Container(width: 25, height: 25, child: CircularProgressIndicator()),
+                      )
+                    : Padding(
+                        padding: const EdgeInsets.all(6),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: InkWell(
+                                onTap: () {
+                                  pushNewScreen(context, ShowAllPlaces(id: firstItem.id.toString()));
+                                },
+                                child: CardDetails(name: firstItem.name!, img: firstItem.imgPath!),
+                              ),
+                            ),
+                            SizedBox(width: 10),
+                            secondItem != null
+                                ? Expanded(
+                                    child: InkWell(
+                                      onTap: () {
+                                        pushNewScreen(context, ShowAllPlaces(id: secondItem.id.toString()));
+                                      },
+                                      child: CardDetails(name: secondItem.name!, img: secondItem.imgPath!),
+                                    ),
+                                  )
+                                : Expanded(child: SizedBox()),
+                          ],
                         ),
-                        SizedBox(width: 10),
-                        secondItem != null
-                            ? Expanded(
-                                child: InkWell(
-                                  onTap: () {
-                                    pushNewScreen(context, ShowAllPlaces(id: secondItem.id.toString()));
-                                  },
-                                  child: CardDetails(name: secondItem.name!, img: secondItem.imgPath!),
-                                ),
-                              )
-                            : Expanded(child: SizedBox())
-                      ],
-                    ),
-                  );
-          },
+                      );
+              },
+            ),
+          ),
         ),
       );
     }
