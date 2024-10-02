@@ -4,10 +4,10 @@ import 'package:day12_login/data/controllers/favorite/favorite.dart';
 import 'package:day12_login/data/controllers/home/home_provider.dart';
 import 'package:day12_login/data/controllers/places/Places.dart';
 import 'package:day12_login/data/controllers/profile/profile_provider.dart';
+import 'package:day12_login/screens/widgets/app_bar_widget.dart';
 import 'package:day12_login/screens/widgets/drawer/custom_drawe.dart';
 import 'package:day12_login/screens/category/places/details_screen.dart';
 import 'package:day12_login/screens/favorite/widget/item_card.dart';
-import 'package:day12_login/screens/widgets/app_bar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -32,7 +32,7 @@ class _Favorite_ScreenState extends State<Favorite_Screen> {
         return SafeArea(
           child: Scaffold(
             backgroundColor: const Color.fromRGBO(233, 235, 255, 1),
-            appBar: AppBarWidget(context: context, show_Search: false),
+            appBar: AppBar_Widget(context: context, show_Search: false),
             drawer: Custom_Drawer(),
             body: SingleChildScrollView(
               child: Directionality(

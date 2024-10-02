@@ -34,7 +34,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       return SafeArea(
         child: Scaffold(
           backgroundColor: const Color.fromRGBO(233, 235, 255, 1),
-          appBar: AppBarWidget(context: context, show_Search: false),
+          appBar: AppBar_Widget(context: context, show_Search: false),
           drawer: Custom_Drawer(),
           body: isLoading
               ? const Center(child: CircularProgressIndicator()) // Added const

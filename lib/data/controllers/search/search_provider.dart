@@ -19,22 +19,21 @@ class Search_Provider with ChangeNotifier {
 
   Future<void> fetch_Search(BuildContext context, String token, String value) async {
     is_loading = true;
-    notifyListeners(); // Notify listeners that loading has started
+    dataSearch = null;
 
     try {
       final fetchedData = await Search_Api().fetch_Search_Api(context, token, value);
       if (fetchedData != null) {
-        // Optionally, ensure unique data here if needed
         dataSearch = fetchedData;
       } else {
-        dataSearch = null; // Handle the case where no data is returned
+        dataSearch = null;
       }
     } catch (error) {
       print("Error fetching search data: $error");
       dataSearch = null;
     } finally {
-      is_loading = false; // Ensure loading state is reset
-      notifyListeners(); // Notify listeners that loading has finished
+      is_loading = false;
+      notifyListeners();
     }
   }
 }
