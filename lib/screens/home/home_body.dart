@@ -38,9 +38,12 @@ class _HomeBodyScreenState extends State<Home_body_Screen> {
     final pro_Profile = Provider.of<Profile_Provider>(context, listen: false);
     final pro_Favorite = Provider.of<Favorite_Controller>(context, listen: false);
     final pro_Privacy_About = Provider.of<Privacy_About_Controller>(context, listen: false);
+    final pro_Search_Provider = Provider.of<Search_Provider>(context, listen: false);
 
     if (home_Controller.allCategories.isEmpty) {
       await pro_Profile.fetch_Profile(context, pro_Auth.user!.data!.token!);
+      await pro_Search_Provider.fetch_Search(context, pro_Auth.user!.data!.token!, "");
+
       await home_Controller.fetch_sliders(context, pro_Auth.user!.data!.token!);
       await home_Controller.fetch_Categories(context);
 

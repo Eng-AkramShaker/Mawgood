@@ -9,7 +9,7 @@ import 'package:provider/provider.dart';
 
 AppBar AppBar_Widget({required BuildContext context, required bool? show_Search}) {
   return AppBar(
-    title: show_Search == false ? const Text("") : const Text(' ع'),
+    title: show_Search == false ? const Text("") : const Text(""),
     actions: show_Search == true
         ? [
             IconButton(

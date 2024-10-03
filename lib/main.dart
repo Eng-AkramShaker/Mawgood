@@ -60,34 +60,13 @@ class MyHomePage extends StatelessWidget {
       return Scaffold(
         backgroundColor: w_grey_Color,
         body: Home_Screen(),
-
-        // Consumer<MyDrawerController>(
-        //   builder: (context, drawerController, child) {
-        //     return ZoomDrawer(
-        //       controller: drawerController.zoomDrawerController,
-        //       menuScreen: MenuScreen1(),
-        //       mainScreen: Home_Screen(),
-        //       borderRadius: 24.0,
-        //       showShadow: true,
-        //       angle: -12.0,
-        //       drawerShadowsBackgroundColor: Colors.grey,
-        //       slideWidth: MediaQuery.of(context).size.width * 0.65,
-        //     );
-        //   },
-        // ),
       );
     });
   }
 }
 
 
-// ElevatedButton(
-// onPressed: ()async {
-// pro_Profile.fetch_Profile(context, pro_Auth.user!.data!.token!);
-// },
-// child: Text('data'),
-// ),
-
+ 
 
 // eng.akramsh@gmail.com
 
